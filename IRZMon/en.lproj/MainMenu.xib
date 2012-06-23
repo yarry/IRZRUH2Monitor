@@ -152,7 +152,7 @@
 					</object>
 					<object class="NSMenuItem" id="280629975">
 						<reference key="NSMenu" ref="408261222"/>
-						<string key="NSTitle">Quit IRZMonitor</string>
+						<string key="NSTitle">Quit IRZRUH2Monitoritor</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="1070137973"/>

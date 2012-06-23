@@ -9,10 +9,18 @@
 #import <Cocoa/Cocoa.h>
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
-
-@property (assign) IBOutlet NSWindow *window;
-@property (strong) IBOutlet NSMenu *statusMenu;
-@property (strong) IBOutlet NSStatusItem *statusItem;
+{
+    @private
+    NSTimer* _updateTimer;
+    NSMutableData*  _reseivedData;
+    NSURL*  _baseURL;
+    NSWindow *_window;
+    NSMenu *_statusMenu;
+    NSStatusItem *_statusItem;
+}
+@property (assign,nonatomic) IBOutlet NSWindow *window;
+@property (retain,nonatomic) IBOutlet NSMenu *statusMenu;
+@property (retain,nonatomic) IBOutlet NSStatusItem *statusItem;
 
 - (IBAction)login:(id)sender;
 

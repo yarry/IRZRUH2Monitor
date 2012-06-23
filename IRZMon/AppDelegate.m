@@ -10,12 +10,10 @@
 #include <SystemConfiguration/SystemConfiguration.h>
 
 @interface AppDelegate()<NSURLConnectionDelegate>
-{
 
-}
-@property (strong) NSTimer* updateTimer;
-@property (strong) NSMutableData*  reseivedData;
-@property (strong) NSURL*  baseURL;
+@property (retain,nonatomic) NSTimer* updateTimer;
+@property (retain,nonatomic) NSMutableData*  reseivedData;
+@property (retain,nonatomic) NSURL*  baseURL;
 @end
 
 @implementation AppDelegate
@@ -101,9 +99,10 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     // parse     
-    NSString* data = [[NSString alloc] initWithBytes:_reseivedData.bytes length:_reseivedData.length encoding:NSUTF8StringEncoding];
+    NSString* data = [[[NSString alloc] initWithBytes:_reseivedData.bytes length:_reseivedData.length encoding:NSUTF8StringEncoding] autorelease];
     
-    NSString *connectionType,*connectionState;
+    NSString *connectionType = nil;
+    NSString*connectionState = nil;
     int connectionQuality=-1;
     
     NSLog(@"%@",data);
