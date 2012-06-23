@@ -11,5 +11,11 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (strong) IBOutlet NSMenu *statusMenu;
+@property (strong) IBOutlet NSStatusItem *statusItem;
+
+@property (strong) IBOutletCollection(NSMenuItem) NSArray* items;
+
+- (IBAction)login:(id)sender;
 
 @end
