@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#include <SystemConfiguration/SystemConfiguration.h>
 
 @interface AppDelegate()<NSURLConnectionDelegate>
 {
@@ -14,6 +15,7 @@
 }
 @property (strong) NSTimer* updateTimer;
 @property (strong) NSMutableData*  reseivedData;
+@property (strong) NSURL*  baseURL;
 @end
 
 @implementation AppDelegate
@@ -23,6 +25,7 @@
 @synthesize statusMenu = _statusMenu;
 @synthesize statusItem = _statusItem;
 @synthesize reseivedData = _reseivedData;
+@synthesize baseURL = _baseURL;
 
 - (void)updateData:(NSTimer*)sender
 {
@@ -33,7 +36,7 @@
         [_statusItem setHighlightMode:YES];
     }
     
-    NSURLRequest* req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.2"] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:1];
+    NSURLRequest* req = [NSURLRequest requestWithURL:_baseURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:1];
     
     
     [self.reseivedData setLength:0];
@@ -56,7 +59,7 @@
 
 - (void)login:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://192.168.1.2/cgi-bin/index.cgi"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"cgi-bin/index.cgi" relativeToURL:_baseURL]];
 }
 
 - (void) scanMenu:(NSString*) data
@@ -158,7 +161,15 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(updateData:) userInfo:nil repeats:YES];
+    SCDynamicStoreRef ds = SCDynamicStoreCreate(NULL, CFSTR("setDNS"), NULL, NULL);
+    CFDictionaryRef dict = SCDynamicStoreCopyValue(ds,CFSTR("State:/Network/Global/IPv4"));
+    CFStringRef router = CFDictionaryGetValue(dict, CFSTR("Router")); 
+    self.baseURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/",router]];
+    CFRelease(ds);
+    CFRelease(dict);
+    
+    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:29 target:self selector:@selector(updateData:) userInfo:nil repeats:YES];
+    [_updateTimer performSelector:@selector(fire) withObject:nil afterDelay:10];
 }
 
 @end

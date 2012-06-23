@@ -13,6 +13,7 @@
 		5CC7712F1593CECA00604B26 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5CC7712D1593CECA00604B26 /* Credits.rtf */; };
 		5CC771321593CECA00604B26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC771311593CECA00604B26 /* AppDelegate.m */; };
 		5CC771351593CECB00604B26 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CC771331593CECB00604B26 /* MainMenu.xib */; };
+		5CF94B501595FC2A00AECBDC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF94B4F1595FC2A00AECBDC /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		5CC771301593CECA00604B26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5CC771311593CECA00604B26 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5CC771341593CECB00604B26 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5CF94B4F1595FC2A00AECBDC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CF94B501595FC2A00AECBDC /* SystemConfiguration.framework in Frameworks */,
 				5CC7711F1593CECA00604B26 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +66,7 @@
 		5CC7711D1593CECA00604B26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5CF94B4F1595FC2A00AECBDC /* SystemConfiguration.framework */,
 				5CC7711E1593CECA00604B26 /* Cocoa.framework */,
 				5CC771201593CECA00604B26 /* Other Frameworks */,
 			);

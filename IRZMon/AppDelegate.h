@@ -14,8 +14,6 @@
 @property (strong) IBOutlet NSMenu *statusMenu;
 @property (strong) IBOutlet NSStatusItem *statusItem;
 
-@property (strong) IBOutletCollection(NSMenuItem) NSArray* items;
-
 - (IBAction)login:(id)sender;
 
 @end
