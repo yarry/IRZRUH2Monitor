@@ -168,7 +168,14 @@
     CFRelease(dict);
     
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:29 target:self selector:@selector(updateData:) userInfo:nil repeats:YES];
-    [_updateTimer performSelector:@selector(fire) withObject:nil afterDelay:10];
+}
+
+- (void)quit:(id)sender
+{
+    if(_statusItem) {
+        [[NSStatusBar systemStatusBar] removeStatusItem:_statusItem];
+    }
+    [[NSApplication sharedApplication] terminate:self];
 }
 
 @end

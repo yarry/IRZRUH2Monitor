@@ -23,5 +23,5 @@
 @property (retain,nonatomic) IBOutlet NSStatusItem *statusItem;
 
 - (IBAction)login:(id)sender;
-
+- (IBAction)quit:(id)sender;
 @end
