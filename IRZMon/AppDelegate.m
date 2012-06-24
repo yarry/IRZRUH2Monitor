@@ -41,6 +41,11 @@
     [NSURLConnection connectionWithRequest:req delegate:self ];
 }
 
+- (void)menuWillOpen:(NSMenu *)menu
+{
+    [self updateData:nil];
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     self.reseivedData = [NSMutableData dataWithCapacity:[[[(NSHTTPURLResponse*)response allHeaderFields] objectForKey:@"ContentSize"] intValue]];
